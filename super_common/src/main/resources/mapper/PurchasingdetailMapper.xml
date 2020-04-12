@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.togogo.mapper.PurchasingdetailMapper">
+  <resultMap id="BaseResultMap" type="net.togogo.entity.Purchasingdetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pd_id" jdbcType="VARCHAR" property="pdId" />
+    <result column="p_id" jdbcType="VARCHAR" property="pId" />
+    <result column="pd_num" jdbcType="DOUBLE" property="pdNum" />
+    <result column="s_id" jdbcType="VARCHAR" property="sId" />
+    <result column="k_id" jdbcType="VARCHAR" property="kId" />
+    <result column="purchasingprice" jdbcType="DOUBLE" property="purchasingprice" />
+    <result column="p_unit" jdbcType="VARCHAR" property="pUnit" />
+    <result column="amount" jdbcType="DOUBLE" property="amount" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, pd_id, p_id, pd_num, s_id, k_id, purchasingprice, p_unit, amount
+  </sql>
+  <select id="selectByExample" parameterType="net.togogo.entity.PurchasingdetailExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from purchasingdetail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from purchasingdetail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from purchasingdetail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="net.togogo.entity.PurchasingdetailExample">
+    delete from purchasingdetail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="net.togogo.entity.Purchasingdetail">
+    insert into purchasingdetail (id, pd_id, p_id, 
+      pd_num, s_id, k_id, purchasingprice, 
+      p_unit, amount)
+    values (#{id,jdbcType=INTEGER}, #{pdId,jdbcType=VARCHAR}, #{pId,jdbcType=VARCHAR}, 
+      #{pdNum,jdbcType=DOUBLE}, #{sId,jdbcType=VARCHAR}, #{kId,jdbcType=VARCHAR}, #{purchasingprice,jdbcType=DOUBLE}, 
+      #{pUnit,jdbcType=VARCHAR}, #{amount,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="net.togogo.entity.Purchasingdetail">
+    insert into purchasingdetail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pdId != null">
+        pd_id,
+      </if>
+      <if test="pId != null">
+        p_id,
+      </if>
+      <if test="pdNum != null">
+        pd_num,
+      </if>
+      <if test="sId != null">
+        s_id,
+      </if>
+      <if test="kId != null">
+        k_id,
+      </if>
+      <if test="purchasingprice != null">
+        purchasingprice,
+      </if>
+      <if test="pUnit != null">
+        p_unit,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pdId != null">
+        #{pdId,jdbcType=VARCHAR},
+      </if>
+      <if test="pId != null">
+        #{pId,jdbcType=VARCHAR},
+      </if>
+      <if test="pdNum != null">
+        #{pdNum,jdbcType=DOUBLE},
+      </if>
+      <if test="sId != null">
+        #{sId,jdbcType=VARCHAR},
+      </if>
+      <if test="kId != null">
+        #{kId,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasingprice != null">
+        #{purchasingprice,jdbcType=DOUBLE},
+      </if>
+      <if test="pUnit != null">
+        #{pUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="net.togogo.entity.PurchasingdetailExample" resultType="java.lang.Long">
+    select count(*) from purchasingdetail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update purchasingdetail
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.pdId != null">
+        pd_id = #{record.pdId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pId != null">
+        p_id = #{record.pId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pdNum != null">
+        pd_num = #{record.pdNum,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sId != null">
+        s_id = #{record.sId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kId != null">
+        k_id = #{record.kId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.purchasingprice != null">
+        purchasingprice = #{record.purchasingprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.pUnit != null">
+        p_unit = #{record.pUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amount != null">
+        amount = #{record.amount,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update purchasingdetail
+    set id = #{record.id,jdbcType=INTEGER},
+      pd_id = #{record.pdId,jdbcType=VARCHAR},
+      p_id = #{record.pId,jdbcType=VARCHAR},
+      pd_num = #{record.pdNum,jdbcType=DOUBLE},
+      s_id = #{record.sId,jdbcType=VARCHAR},
+      k_id = #{record.kId,jdbcType=VARCHAR},
+      purchasingprice = #{record.purchasingprice,jdbcType=DOUBLE},
+      p_unit = #{record.pUnit,jdbcType=VARCHAR},
+      amount = #{record.amount,jdbcType=DOUBLE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="net.togogo.entity.Purchasingdetail">
+    update purchasingdetail
+    <set>
+      <if test="pdId != null">
+        pd_id = #{pdId,jdbcType=VARCHAR},
+      </if>
+      <if test="pId != null">
+        p_id = #{pId,jdbcType=VARCHAR},
+      </if>
+      <if test="pdNum != null">
+        pd_num = #{pdNum,jdbcType=DOUBLE},
+      </if>
+      <if test="sId != null">
+        s_id = #{sId,jdbcType=VARCHAR},
+      </if>
+      <if test="kId != null">
+        k_id = #{kId,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasingprice != null">
+        purchasingprice = #{purchasingprice,jdbcType=DOUBLE},
+      </if>
+      <if test="pUnit != null">
+        p_unit = #{pUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.togogo.entity.Purchasingdetail">
+    update purchasingdetail
+    set pd_id = #{pdId,jdbcType=VARCHAR},
+      p_id = #{pId,jdbcType=VARCHAR},
+      pd_num = #{pdNum,jdbcType=DOUBLE},
+      s_id = #{sId,jdbcType=VARCHAR},
+      k_id = #{kId,jdbcType=VARCHAR},
+      purchasingprice = #{purchasingprice,jdbcType=DOUBLE},
+      p_unit = #{pUnit,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

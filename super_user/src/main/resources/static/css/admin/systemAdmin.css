@@ -1,0 +1,23 @@
+.center_block{
+    margin: 5px;
+    width: 1200px;
+}
+.left_block{
+    border-right: 1px solid #d4d4d4;
+    width: 200px;
+    height: 600px;
+    background-color: #d4d4d4;
+    display: inline-block;
+    float: left;
+}
+.right_block{
+    float: right;
+    text-align: center;
+    display: inline-block;
+    margin: 10px;
+    width: 950px;
+    height: auto;
+}
+
+
+

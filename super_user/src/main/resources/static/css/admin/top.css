@@ -1,0 +1,24 @@
+.top{
+    margin: 0 auto 0 auto;
+    width: 1000px;
+}
+.top h1{
+    vertical-align: bottom;
+    float: left;
+}
+#up{
+    border-bottom: 1px solid #d4d4d4;
+    height: 75px;
+}
+.top_subnav{
+    float: right;
+    margin-top: 40px;
+}
+.top_subnav li{
+    display: inline-block;
+    line-height: 30px;
+    background-position: left center;
+    padding-left: 12px;
+    margin-left: 10px;
+
+}
