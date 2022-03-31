@@ -23,7 +23,7 @@
     </modules>
 
     <properties>
-        <springboot.version>2.1.9.RELEASE</springboot.version>
+        <springboot.version>2.5.12</springboot.version>
         <java.version>1.8</java.version>
         <junit.version>4.11</junit.version>
         <mysql.version>8.0.15</mysql.version>
