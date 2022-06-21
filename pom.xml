@@ -26,7 +26,7 @@
         <springboot.version>2.1.9.RELEASE</springboot.version>
         <java.version>1.8</java.version>
         <junit.version>4.11</junit.version>
-        <mysql.version>8.0.15</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <mybatis-spring.version>1.3.2</mybatis-spring.version>
         <durid.version>1.1.8</durid.version>
         <pagehelper.version>5.0.0</pagehelper.version>
